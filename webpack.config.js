@@ -14,7 +14,7 @@ module.exports = {
         loaders: [//loaders是在打包构建过程中用来处理源文件的（JSX，Scss，Less..），一次处理一个
             {
                 test: /\.json$/,
-                loader: "json"//在配置文件里添加JSON loader 处理json
+                loader: "json-loader"//在配置文件里添加JSON loader 处理json
             },
             {
                 test: /\.js$/,
@@ -23,7 +23,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: 'style!css?modules'//添加对样式表的处理 ?modules不同的css模块只对相应的模块起作用
+                loader: 'style-loader!css-loader'//添加对样式表的处理 ?modules不同的css模块只对相应的模块起作用
+            },
+            {
+                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                loader: 'url-loader!file-loader?limit=50000&name=[path][name].[ext]'
             }
         ]
     },
@@ -43,6 +47,14 @@ module.exports = {
                     hot: true
                 }
             }
+        }),
+        // new webpack.ProvidePlugin({ //加载jq
+        //     $: 'jquery'
+        // }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "windows.jQuery": "jquery"
         }),
         new webpack.BannerPlugin("Copyright Flying Unicorns inc."),//版权声明插件,内置插件
 

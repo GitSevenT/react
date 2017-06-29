@@ -1,17 +1,18 @@
 import React from 'react';
 import {render} from 'react-dom';
-import { Router, Route, Link, hashHistory,HashRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, hashHistory,HashRouter,browserHistory } from 'react-router-dom';
 
+import 'bootstrap/dist/css/bootstrap.css';
 import App from  './app/component/main.js';
 import Index from  './app/component/index.js';
 import My from  './app/component/my.js';
 
 
 render(
-    (<HashRouter history={hashHistory} >
+    (<Router history={browserHistory} >
         <App>
             <Route exact path="/" component={Index}/>
             <Route path="/my" component={My}/>
         </App>
-    </HashRouter>)
-    ,document.getElementById("index"));
+    </Router>)
+    ,document.getElementById("app"));
