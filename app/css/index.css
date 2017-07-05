@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+a:hover,a:active,a:link,a:visited{
+    text-decoration: none;
+}
+.footerText{
+    height: 50px;
+    line-height: 50px;
+}
+.header{
+    background: #ffa6a6;
+}
+.header ul{
+    height: 50px;
+    display: table;
+    margin-bottom: 0;
+}
+.header li{
+    display: table-cell;
+    line-height: 50px;
+    color: #fff;
+}
+.header li:nth-child(2){
+    /*margin: 0 2%;*/
+    width: 100%;
+    text-align: center;
+}

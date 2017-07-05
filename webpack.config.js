@@ -1,12 +1,12 @@
 
 var webpack = require('webpack');
-
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
     entry:  __dirname + "/app.js",//已多次提及的唯一入口文件
     output: {
         path: __dirname + "/build",//打包后的文件存放的地方
-        publicPath: "",
+        publicPath: "/build",
         filename: "bundle.js"//打包后输出文件的文件名
     },
 
@@ -26,9 +26,17 @@ module.exports = {
                 loader: 'style-loader!css-loader'//添加对样式表的处理 ?modules不同的css模块只对相应的模块起作用
             },
             {
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
-                loader: 'url-loader!file-loader?limit=50000&name=[path][name].[ext]'
+                test: /\.(png|jpg|gif)$/,
+                loader: 'url-loader?limit=8192&name="[name]-[hash].[ext]"',
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader?name="[name]-[hash].[ext]"',
             }
+            // {
+            //     test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+            //     loader: 'url-loader!file-loader?limit=50000&name=[path][name].[ext]'
+            // }
         ]
     },
     plugins: [//plugins关键字部分添加该插件的一个实例（plugins是一个数组）
@@ -48,9 +56,6 @@ module.exports = {
                 }
             }
         }),
-        // new webpack.ProvidePlugin({ //加载jq
-        //     $: 'jquery'
-        // }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
@@ -61,6 +66,10 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),//热加载插件
 
         new webpack.optimize.UglifyJsPlugin(),//压缩JS代码
+
+        new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
+
+
     ],
     devtool: 'eval-source-map'//配置生成Source Maps，选择合适的选项
 };
