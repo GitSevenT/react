@@ -2,7 +2,7 @@ var Mock = require('mockjs');
 //调用mock方法模拟数据
 Mock.mock(
     'http://mockjs', {
-        'result|1-10': [{
+        'result|2': [{
             'id|+1': 1,
             "userName": '@cname',     //模拟名称
             "age|1-100": 100,          //模拟年龄(1-100)

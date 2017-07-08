@@ -4,7 +4,7 @@ import {Grid, Row, Col, Image} from 'react-bootstrap';
 class Nav extends Component {
     render() {
         return (
-            <div style={{marginTop:"5%"}}>
+            <div style={{paddingTop:"5%",backgroundColor:"#fff"}}>
                 <Grid>
                     <Row>
                         <Col xs={3} md={3}>
