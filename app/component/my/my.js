@@ -5,13 +5,15 @@ class My extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            headerC : "我的"
+            headerC : "我的",
+            headerL : '<span class="glyphicon glyphicon-envelope"></span>',
+            headerR : '<i class="glyphicon glyphicon-align-left"></i>'
         };
     }
     render() {
         return (
             <div>
-                <Header headerC={this.state.headerC}/>
+                <Header headerC={this.state.headerC} headerL={this.state.headerL} headerR={this.state.headerR}/>
                 <div className="container" style={{paddingTop:"5%",backgroundColor:"#fff"}}>
                     <Media.List>
                         <Media.ListItem>

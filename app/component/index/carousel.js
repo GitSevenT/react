@@ -3,7 +3,6 @@ import {Carousel} from 'react-bootstrap';
 class Carouse extends Component {
     render() {
         return (
-            <div>
                 <Carousel>
                     <Carousel.Item>
                         <img alt="banner" src="./app/images/1.jpg"/>
@@ -27,7 +26,6 @@ class Carouse extends Component {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
-            </div>
         );
     }
 }

@@ -35,8 +35,6 @@ class List extends Component {
                                                     <span>取消关注</span>
                                                 </div>
                                             </div>
-
-
                                         </Col>
                                     )
                                 }.bind(this))
@@ -49,8 +47,7 @@ class List extends Component {
     };
     /*渲染完成后发送ajax请求*/
     componentDidMount() {
-        console.log(this.state.ajaxRes);
-        $.ajax({
+        this.ajax = $.ajax({
             url: "http://mockjs",    //请求的url地址
             dataType: "json",   //返回格式为json
             async: true, //请求是否异步，默认为异步，这也是ajax重要特性
@@ -60,16 +57,11 @@ class List extends Component {
             },
             success: function (data) {
                 //请求成功时处理
-                console.log(typeof data);
-                setTimeout(function () {
-                    this.state.ajaxRes = data.result;
+                // setTimeout(function () {
                     this.setState({
-                        ajaxRes: this.state.ajaxRes
+                        ajaxRes: data.result
                     });
-                }.bind(this), 2000);
-
-
-                // console.log(this.state.ajaxRes.length);
+                // }.bind(this), 2000);
             }.bind(this),
             complete: function () {
                 //请求完成的处理
@@ -80,6 +72,10 @@ class List extends Component {
             }
         });
 
+    }
+    componentWillUnmount(){
+        this.ajax.abort();
+        // alert(1)
     }
 }
 

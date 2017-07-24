@@ -11,13 +11,16 @@ class Cir extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            headerC : "烘焙圈"
+            headerC : "烘焙圈",
+            headerL : '<span class="glyphicon glyphicon-envelope"></span>',
+            headerR : '<i class="glyphicon glyphicon-plus"></i>'
         };
     }
     render() {
         return (
             <div>
-                <Header headerC={this.state.headerC}/>
+                <Header headerC={this.state.headerC} headerL={this.state.headerL} headerR={this.state.headerR}/>
+
                 <Tabs defaultActiveKey={1} id="uncontrolled-tab-example" className="container-full">
                     <Tab eventKey={1} title="最新">
                         <New/>
@@ -29,6 +32,8 @@ class Cir extends Component{
                         <Care/>
                     </Tab>
                 </Tabs>
+
+
             </div>
         );
     }

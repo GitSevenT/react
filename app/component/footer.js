@@ -11,47 +11,35 @@ class Footer extends Component{
             indexColor : "#ffa6a6"
         };
     }
-    changeColor(){
-        this.state.indexColor = "#000";
-        this.setState({
-            indexColor : this.state.indexColor
-        })
-    }
     render() {
         return (
-
                 <nav className="navbar navbar-default navbar-fixed-bottom">
                     <div className="container-fluid footerText">
                         <div className="row">
                             <div className="col-lg-3 col-xs-3 text-center">
-                                <NavLink to="/"  style={{color:this.state.indexColor}}>
+                                <NavLink exact to="/"  activeStyle={{color:'#ffa6a6'}}>
                                     首页
                                 </NavLink>
                             </div>
                             <div className="col-lg-3 col-xs-3 text-center">
-                                <NavLink to={{pathname:'/cir', search: '?sort=name'}}
-                                         activeStyle={{color: '#ffa6a6'}}
-                                         style={{color:'#000'}}
-                                         onClick={this.changeColor.bind(this)}>
+                                <NavLink exact to={{pathname:'/cir', search: '?sort=name'}}
+                                         activeStyle={{color: '#ffa6a6'}}>
                                     圈子
                                 </NavLink>
                             </div>
                             <div className="col-lg-3 col-xs-3 text-center">
-                                <NavLink to="/shop" activeStyle={{color: '#ffa6a6'}}
-                                         style={{color:'#000'}}>
+                                <NavLink exact to="/shop" activeStyle={{color: '#ffa6a6'}}>
                                     商城
                                 </NavLink>
                             </div>
                             <div className="col-lg-3 col-xs-3 text-center">
-                                <NavLink to="/my" activeStyle={{color: '#ffa6a6'}}
-                                         style={{color:'#000'}}>
+                                <NavLink to="/my" activeStyle={{color: '#ffa6a6'}}>
                                     我的
                                 </NavLink>
                             </div>
                         </div>
                     </div>
                 </nav>
-
         );
     }
 }

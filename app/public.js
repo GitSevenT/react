@@ -11,13 +11,22 @@ class App extends Component{
         };
     }
     render() {
+        // var components = this.props.children.map(function (child) {
+        //     return child.props
+        // });
         return (
             <div>
                 {this.props.children}
-                <div><Footer/></div>
+                    {/*{this.props.children && React.cloneElement(this.props.children, {*/}
+                        {/*someProp: "1"*/}
+                    {/*})}*/}
+                {/*{this.props.children.map((child,index)=>React.cloneElement(child,{key:index,ref:index,isTop:this.isTop}))}*/}
+                <Footer/>
             </div>
         );
     }
+
+
 }
 
 export default App
