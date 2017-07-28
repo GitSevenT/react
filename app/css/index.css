@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    touch-action: none;
 }
 html{
     font-size: 12px;
@@ -11,6 +12,7 @@ body{
     padding-top: 50px;
     overflow: hidden;
     height: 100%;
+    background: url("../images/1.jpg");
 }
 #app{
     overflow: auto;
@@ -278,4 +280,16 @@ a:hover,a:active,a:link,a:visited{
     margin: 5% auto;
     font-size: 1.5rem;
     color: #fff;
+}
+#wrapper{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+#scrollDiv{
+    background: #e7e7e7;
+    position: absolute;
+    top:0;
+    width: 100%;
+    padding-top: 15px;
 }
