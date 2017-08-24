@@ -14,7 +14,7 @@ class GoodType extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="goodTypes">
                 <Header headerC={this.props.location.state.headerC} headerL={this.state.headerL} headerR={this.state.headerR}/>
                 {console.log(this.props.location)}
 

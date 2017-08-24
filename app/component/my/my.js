@@ -14,9 +14,8 @@ class My extends Component{
         return (
             <div>
                 <Header headerC={this.state.headerC} headerL={this.state.headerL} headerR={this.state.headerR}/>
-                <div className="container" style={{paddingTop:"5%",backgroundColor:"#fff"}}>
-                    <Media.List>
-                        <Media.ListItem>
+                <div className="container-full" style={{paddingTop:"5%",backgroundColor:"#fff"}}>
+                        <Media.ListItem className="container">
                             <Media.Left>
                                 <Image width={60} height={60} src="/assets/thumbnail.png" alt="Image" circle/>
                             </Media.Left>
@@ -32,13 +31,12 @@ class My extends Component{
                                 <p className="glyphicon glyphicon-phone">普通会员</p>
                             </Media.Body>
                         </Media.ListItem>
-                    </Media.List>
                 </div>
-                <Row className="show-grid myItem text-center container">
-                    <Col xs={4} md={4}>关注(52)</Col>
-                    <Col xs={4} md={4} style={{borderLeft:"1px solid #e7e7e7",borderRight:"1px solid #e7e7e7"}}>粉丝(52)</Col>
-                    <Col xs={4} md={4}>收藏(52)</Col>
-                </Row>
+                <div className="show-grid myItem text-center container-full">
+                    <Col xs={4} sm={4} md={4} lg={4}>关注(52)</Col>
+                    <Col xs={4} sm={4} md={4} lg={4} style={{borderLeft:"1px solid #e7e7e7",borderRight:"1px solid #e7e7e7"}}>粉丝(52)</Col>
+                    <Col xs={4} sm={4} md={4} lg={4}>收藏(52)</Col>
+                </div>
                 <ul className="myItem clearfix">
                     <li className="firstLi text-right"><i className="glyphicon glyphicon-duplicate"></i></li>
                     <li className="secondLi">我的订单</li>

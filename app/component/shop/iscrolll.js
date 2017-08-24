@@ -8,18 +8,16 @@ class Iscroll extends Component {
         this.state = {
             goodTypes : null,
             loadTopState : "下拉刷新",
-            loadBtmState : "上拉加载",
-            loadDis : true
+            loadBtmState : "上拉加载"
         };
 
     }
     render() {
         return (
             <div className="iscroll5">
+                <div className="text-center" style={{paddingTop:"15px"}} id="loadTop">{this.state.loadTopState}</div>
                 <div id="wrapper" ref="wrapper">
-                    <div id="scrollDiv" className="text-center" ref="scrollDiv">
-                        <div ref="loadTop" style={{height:"0",overflow:"hidden",background:"#b0b0b0",
-                            width:"100%",padding:"0px 0"}}>{this.state.loadTopState}</div>
+                    <div id="scrollDiv" className="text-center">
                         {
                             this.state.goodTypes==null ? "loading..." :
                                 this.state.goodTypes.map((item,index)=>(
@@ -34,15 +32,19 @@ class Iscroll extends Component {
                                     </Media>
                                 ))
                         }
-                        <div className="text-center" ref="loadBtm"
-                             style={{paddingTop:"15px",width:"100%"}}>
-                            {this.state.loadBtmState}</div>
                     </div>
                 </div>
+                <div className="text-center" id="loadBtm"
+                     style={{position:"absolute",bottom:"50px",padding:"15px 0",zIndex:"1",width:"100%"}}>
+                     {this.state.loadBtmState}</div>
             </div>
         );
     }
     componentDidMount(){
+        // var htmlH = document.querySelector("html").getBoundingClientRect().height;
+        // var wrapperH = htmlH - 50;
+        // console.log(wrapperH)
+        // this.refs.wrapper.style.height = wrapperH + "px";
         this.ajax = $.ajax({
             url: "http://mockjs",    //请求的url地址
             dataType: "json",   //返回格式为json
@@ -75,55 +77,23 @@ class Iscroll extends Component {
                     scrollbars: true
                 };
                 this.myScroll = new IScroll('#wrapper', options);
-                this.myScroll.on('beforeScrollStart', this.beforeScrollStart.bind(this));
-                this.myScroll.on('scrollCancel', this.scrollCancel.bind(this));
-                this.myScroll.on('scrollStart', this.scrollStart.bind(this));
-                this.myScroll.on('scroll', this.scroll.bind(this));
-                this.myScroll.on('scrollEnd', this.scrollEnd.bind(this));
-                // this.myScroll.scrollerStyle.transform = "translate(0px, -40px) translateZ(0px)";
-                // console.log(this.myScroll.scrollerStyle.transform);
-                // this.myScroll.scrollBy(0, -40)
+                this.myScroll.on('scroll', this.onScroll.bind(this));
+                this.myScroll.on('scrollEnd', this.onScrollEnd.bind(this));
+                console.log(this.refs.loadTop);
             }.bind(this),
             error: function () {
                 //请求出错处理
             }
         });
 
-
         // console.dir(this.myScroll.options);
-        // this.myScroll.scrollTo(0, 100,1000)
         // document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     }
-    beforeScrollStart(){
-        console.log("触摸屏幕");
-
-    }
-    scrollCancel(){
-        console.log("初始化完成");
-        // var loadTopHtml = '<div className="loadTop" ref="loadTop"'+
-        // 'style="position:absolute;top:0;background:#b0b0b0;width:100%;text-align:center;padding:10px 0">'+
-        // '下拉加载</div>';
-        // var creatDiv = document.createElement('div');
-        // creatDiv.innerHTML = loadTopHtml;
-        // console.log(creatDiv);
-        // this.refs.wrapper.insertBefore(creatDiv,this.refs.scrollDiv);
-    }
-    scrollStart(){
-        console.log("开始滚动")
-    }
-    scroll(){
+    onScroll(){
         // console.dir(this.myScroll);
-
-        // console.log("滚动中...");
-        if(parseInt(this.refs.loadTop.style.height) !== 40){
-            this.refs.loadTop.style.height = this.refs.loadTop.style.lineHeight = this.myScroll.y + "px";
-        }
+        // console.log(this.myScroll.y);
+        // console.log("开始");
         if(this.myScroll.y>40){
-            this.refs.loadTop.style.height = 40+"px"
-        }
-        console.log(this.refs.loadTop.style.height);
-
-        if(this.myScroll.y>10){
             this.setState({
                 loadTopState : "刷新中..."
             });
@@ -133,23 +103,19 @@ class Iscroll extends Component {
                 loadTopState : "下拉刷新"
             });
         }
-        if(this.myScroll.y<this.myScroll.maxScrollY-20){
+        if(this.myScroll.y<this.myScroll.maxScrollY-50){
             this.setState({
                 loadBtmState : "加载中..."
             })
         }
 
     }
-    scrollEnd(){
-        console.log(this.myScroll);
+    onScrollEnd(){
+        // console.log(this.myScroll);
+        // console.log(this.myScroll.y);
+        console.log(this.myScroll.startY+"end");
 
-        if(this.myScroll.y>40){
-            this.refs.loadTop.style.height = 40+"px"
-        }
-        console.log("滚动结束");
-
-
-        if(this.myScroll.startY>10||this.myScroll.startY<this.myScroll.maxScrollY-5){
+        if(this.myScroll.startY>40||this.myScroll.startY<this.myScroll.maxScrollY-50){
             this.ajax = $.ajax({
                 url: "http://mockjs",    //请求的url地址
                 dataType: "json",   //返回格式为json
@@ -160,29 +126,35 @@ class Iscroll extends Component {
 
                 }.bind(this),
                 success: function (data) {
+                    // console.log(data.result);
+                    // this.myScroll.maxScrollY=30;
+                    // setTimeout(function () {
+                    //     this.myScroll.scrollTo(0, 100,1)
+                    // }.bind(this),5000);
                     //请求成功时处理
-                    if(this.myScroll.startY>10){
+                    if(this.myScroll.startY>40){
                         this.state.goodTypes.unshift.apply(this.state.goodTypes,data.result);
                         this.setState({
                             goodTypes : this.state.goodTypes
                         });
                         console.log(this.state.goodTypes)
                     }
-                    if(this.myScroll.startY<this.myScroll.maxScrollY-5){
+                    if(this.myScroll.startY<this.myScroll.maxScrollY-50){
                         this.state.goodTypes.push.apply(this.state.goodTypes,data.result);
                         this.setState({
                             goodTypes : this.state.goodTypes
                         });
                         console.log(this.state.goodTypes)
                     }
+                    // this.setState({
+                    //     goodTypes : this.state.goodTypes.concat(data.result)
+                    // });
                     setTimeout(function () {
                         this.myScroll.refresh();
                     }.bind(this), 0);
                 }.bind(this),
                 complete: function () {
                     //请求完成的处理
-
-
                 }.bind(this),
                 error: function () {
                     console.log("请求出错处理")
@@ -195,10 +167,7 @@ class Iscroll extends Component {
                 loadBtmState : "上拉加载"
             })
         }
-
-
-
-
+        // this.myScroll.scrollTo(0, 100)
     }
 
 }

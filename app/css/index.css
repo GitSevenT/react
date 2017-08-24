@@ -1,11 +1,12 @@
 *{
     margin: 0;
     padding: 0;
-    touch-action: none;
+    /*touch-action: none;*/
 }
 html{
     font-size: 12px;
     height: 100%;
+    overflow: hidden;
 }
 body{
     background: #e7e7e7;
@@ -31,6 +32,14 @@ a:hover,a:active,a:link,a:visited{
 .goBack{
     color: #fff;
 }
+/*nav*/
+.navBox{
+    background:#fff;
+    padding-top:5%;
+}
+.navBox img{
+    margin:0 auto;
+}
 /*footer*/
 .footerText{
     height: 50px;
@@ -42,6 +51,7 @@ a:hover,a:active,a:link,a:visited{
     position: fixed;
     top: 0;
     z-index: 888;
+    width:100%;
 }
 .header>ul{
     height: 50px;
@@ -97,6 +107,8 @@ a:hover,a:active,a:link,a:visited{
     bottom: 0;
     padding-top:2%;
     transition: all .3s;
+    width:100%;
+    transform:translate3d(0,0,0);
 }
 .transToTop>ul>li{
     width: 100%;
@@ -118,6 +130,7 @@ a:hover,a:active,a:link,a:visited{
     top: 0;
     right: 0;
     padding:3% 0;
+    transform:translate3d(0,0,0);
 }
 .transToLeft input,.transToLeft button{
     height: 40px;
@@ -283,13 +296,18 @@ a:hover,a:active,a:link,a:visited{
 }
 #wrapper{
     position: absolute;
-    top: 0;
+    top: 50px;
+    bottom:50px;
     width: 100%;
+    overflow: hidden;
+    background: #b0b0b0;
 }
 #scrollDiv{
     background: #e7e7e7;
     position: absolute;
     top:0;
     width: 100%;
-    padding-top: 15px;
+    /*padding-top: 15px;*/
+    transform:translate3d(0,0,0);
+    touch-action: none;
 }

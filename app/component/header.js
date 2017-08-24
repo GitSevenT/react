@@ -33,24 +33,23 @@ class Header extends Component {
                 </div>
             )}else{
             return(
-                <div>
-                <div className="header">
-                    <ul className="container">
-                        <li dangerouslySetInnerHTML={{__html:this.props.headerL}}>
-                        </li>
-                        <li className="liCenter">{this.state.headerC}</li>
-                        <li onClick={this.isShow.bind(this)}>
-                                <span dangerouslySetInnerHTML={{__html:this.props.headerR}}></span>
-                            <ul className="munUl" style={{height:this.state.isShow ? "101px" : "0"}}>
-                                <li onClick={this.isTop.bind(this)}>
-                                    <i className="glyphicon glyphicon-sort-by-attributes"></i>筛选</li>
-                                <li onClick={this.isLeft.bind(this)}>
-                                    <i className="glyphicon glyphicon-search"></i>搜索</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                </div>
+                <div className="head">
+                    <div className="header">
+                        <ul className="container">
+                            <li dangerouslySetInnerHTML={{__html:this.props.headerL}}>
+                            </li>
+                            <li className="liCenter">{this.state.headerC}</li>
+                            <li onClick={this.isShow.bind(this)}>
+                                    <span dangerouslySetInnerHTML={{__html:this.props.headerR}}></span>
+                                <ul className="munUl" style={{height:this.state.isShow ? "101px" : "0"}}>
+                                    <li onClick={this.isTop.bind(this)}>
+                                        <i className="glyphicon glyphicon-sort-by-attributes"></i>筛选</li>
+                                    <li onClick={this.isLeft.bind(this)}>
+                                        <i className="glyphicon glyphicon-search"></i>搜索</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                     <TransToTop isTop={this.state.isTop} isToP={this.isTop.bind(this)}/>
                     <TransToLeft isLeft={this.state.isLeft} isLeFt={this.isLeft.bind(this)}/>
                 </div>

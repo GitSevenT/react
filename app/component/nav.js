@@ -5,7 +5,7 @@ import { Router, Route, Link } from 'react-router-dom';
 class Nav extends Component {
     render() {
         return (
-            <div style={{paddingTop:"5%",backgroundColor:"#fff"}}>
+            <div className="navBox">
                 <Grid>
                     <Row>
                         <Col xs={3} md={3}>

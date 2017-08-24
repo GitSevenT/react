@@ -8,7 +8,7 @@ class transToLeft extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="leftTrans">
                 <div className="shade" style={{display:this.props.isLeft ? "block" : "none"}}
                      onClick={this.props.isLeFt.bind(this)}>
                 </div>

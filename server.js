@@ -13,10 +13,10 @@ var server = new WebpackDevServer(webpack(config), {
         open: true
     },
 });
-server.listen(8080,'172.27.186.1', function (err, result) {
+server.listen(8081,'172.27.35.1', function (err, result) {
     if (err) {
         console.log(err);
     }
 
-    console.log('Listening at http://172.27.186.1:8080');
+    console.log('Listening at http://172.27.35.1:8081');
 });

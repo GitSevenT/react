@@ -2,11 +2,11 @@ import React , {Component}from 'react';
 class TransToTop extends Component {
     render() {
         return (
-            <div>
+            <div className="topTrans">
                 <div className="shade" style={{display:this.props.isTop ? "block" : "none"}}
                      onClick={this.props.isToP.bind(this)}>
                 </div>
-                <div className="container-full transToTop" style={{transform:this.props.isTop ? "translateY(0)" : "translateY(100%)"}}>
+                <div className="transToTop" style={{transform:this.props.isTop ? "translateY(0)" : "translateY(100%)"}}>
                     <ul className="container clearfix">
                         <li>浏览"购买原料"的教程</li>
                         <li>浏览"购买成品"的教程</li>

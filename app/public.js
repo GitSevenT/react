@@ -15,7 +15,7 @@ class App extends Component{
         //     return child.props
         // });
         return (
-            <div>
+            <div className="public">
                 {this.props.children}
                     {/*{this.props.children && React.cloneElement(this.props.children, {*/}
                         {/*someProp: "1"*/}
