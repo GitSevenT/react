@@ -16,7 +16,7 @@ module.exports = {
     output: {
         path: __dirname + "/build",//打包后的文件存放的地方
         // publicPath: "",//生产
-        publicPath: "/react-demo",//开发
+        publicPath: "/react-demo/build",//开发
         filename: "js/bundle.js"//打包后输出文件的文件名[name]-[chunkhash:6]
     },
 
