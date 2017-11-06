@@ -19,7 +19,7 @@ class Iscroll extends Component {
                 <div id="wrapper" ref="wrapper">
                     <div id="scrollDiv" className="text-center" ref="scrollDiv">
                         <div ref="loadTop" style={{height:"0",overflow:"hidden",background:"#b0b0b0",
-                            width:"100%",padding:"0px 0"}}>{this.state.loadTopState}</div>
+                            width:"100%"}}>{this.state.loadTopState}</div>
                         {
                             this.state.goodTypes==null ? "loading..." :
                                 this.state.goodTypes.map((item,index)=>(
@@ -66,7 +66,7 @@ class Iscroll extends Component {
                     // 禁止缩放
                     zoom: false,
                     // 支持鼠标事件
-                    mouseWheel: false,
+                    mouseWheel: true,
                     // 滚动事件的探测灵敏度，1-3，越高越灵敏，兼容性越好，性能越差
                     probeType: 3,
                     // 拖拽超过上下界后出现弹射动画效果，用于实现下拉/上拉刷新
@@ -116,10 +116,11 @@ class Iscroll extends Component {
 
         // console.log("滚动中...");
         if(parseInt(this.refs.loadTop.style.height) !== 40){
-            this.refs.loadTop.style.height = this.refs.loadTop.style.lineHeight = this.myScroll.y + "px";
+            this.refs.loadTop.style.paddingBottom = this.refs.loadTop.style.height = this.refs.loadTop.style.lineHeight = this.myScroll.y + "px";
         }
         if(this.myScroll.y>40){
-            this.refs.loadTop.style.height = 40+"px"
+            this.refs.loadTop.style.height = 40+"px";
+            this.refs.loadTop.style.paddingBottom = 40+"px"
         }
         console.log(this.refs.loadTop.style.height);
 

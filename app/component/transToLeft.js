@@ -3,7 +3,7 @@ class transToLeft extends Component {
     constructor(props){
         super(props);
         this.state = {
-            subContent : null
+            subContent : 1
         }
     }
     render() {

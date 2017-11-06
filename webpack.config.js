@@ -16,7 +16,7 @@ module.exports = {
     output: {
         path: __dirname + "/build",//打包后的文件存放的地方
         // publicPath: "",//生产
-        publicPath: "/build",//开发
+        publicPath: "/react-demo",//开发
         filename: "js/bundle.js"//打包后输出文件的文件名[name]-[chunkhash:6]
     },
 
@@ -69,8 +69,8 @@ module.exports = {
                     contentBase: "./build",//本地服务器所加载的页面所在的目录
                     colors: true,//终端中输出结果为彩色
                     // historyApiFallback: true,//不跳转
-                    // host: '172.27.186.1',
-                    // port: 8080,
+                    host: '172.27.186.1',
+                    port: 8080,
                     inline: true,//实时刷新
                     hot: true,
                     open: true

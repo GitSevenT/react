@@ -79,12 +79,12 @@ class Header extends Component {
             isLeft : !this.state.isLeft
         })
     }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.location !== this.props.location) {
-            alert("已经跳转了！")
-        }
-    }
+    // //prop更改后调用，及重新render
+    // componentWillReceiveProps() {
+    //     // if (nextProps.location !== this.props.location) {
+    //         alert("！")
+    //     // }
+    // }
 }
 
 export default Header

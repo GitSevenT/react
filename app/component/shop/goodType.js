@@ -1,6 +1,6 @@
 import React , {Component}from 'react';
 import  Header from '../header.js';
-import  Iscroll from './iscroll.js';
+import  Iscroll from './iscrollsuccess.js';
 
 
 class GoodType extends Component {

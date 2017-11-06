@@ -26,6 +26,9 @@ class Index extends Component{
             </div>
         );
     }
+    componentWillUnmount(){
+        alert("我要销毁了")
+    }
 }
 
 export default Index

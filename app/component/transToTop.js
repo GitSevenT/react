@@ -16,6 +16,10 @@ class TransToTop extends Component {
             </div>
         );
     }
+    //prop更改后调用，及重新render
+    componentWillReceiveProps() {
+        alert("属性更改了")
+    }
 }
 
 export default TransToTop
