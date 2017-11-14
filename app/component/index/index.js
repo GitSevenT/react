@@ -27,7 +27,7 @@ class Index extends Component{
         );
     }
     componentWillUnmount(){
-        alert("我要销毁了")
+        console.log("我要销毁了")
     }
 }
 

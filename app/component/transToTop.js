@@ -18,7 +18,7 @@ class TransToTop extends Component {
     }
     //prop更改后调用，及重新render
     componentWillReceiveProps() {
-        alert("属性更改了")
+        console.log("属性更改了")
     }
 }
 

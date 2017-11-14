@@ -20,7 +20,7 @@ render(
     (<Router history={browserHistory} >
         <App>
             {/*<Switch>*/}
-            <Route exact path="/" component={Index}/>
+            <Route exact path="/react-demo" component={Index}/>
             <Route exact path="/cir" component={Cir}/>
             <Route exact path="/shop" component={Shop}/>
             <Route path="/my" component={My}/>

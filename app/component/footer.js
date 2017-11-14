@@ -17,7 +17,7 @@ class Footer extends Component{
                     <div className="container-fluid footerText">
                         <div className="row">
                             <div className="col-lg-3 col-xs-3 text-center">
-                                <NavLink exact to="/"  activeStyle={{color:'#ffa6a6'}}>
+                                <NavLink exact to="/react-demo"  activeStyle={{color:'#ffa6a6'}}>
                                     首页
                                 </NavLink>
                             </div>
